@@ -2,40 +2,48 @@
 
 // Challenge 1
 
-function sayHello() {}
+function sayHello() {
+  setTimeout(() => console.log("Hello"), 1000);
+}
 
 // Uncomment the line below when ready
 // sayHello(); // should log "Hello" after 1000ms
 
 // Challenge 2
 var promise = new Promise(function (resolve, reject) {
-  // ADD CODE HERE
+  setTimeout(resolve("Resolved!"), 1000);
 });
 
 // Should print out "Resolved!"
-// ADD CODE HERE
+// Uncomment the line below
+// promise.then((res) => console.log(res));
 
 // Challenge 3
 
 promise = new Promise(function (resolve, reject) {
-  // ADD CODE HERE
+  reject("Rejected!");
 });
 
 // Should print out "Reject!"
-// ADD CODE HERE
+promise.catch((err) => console.log(err)); // should stay uncommented
 
 // Challenge 4
 
 promise = new Promise(function (resolve, reject) {
   // ADD CODE HERE
+  resolve("Promise has been resolved!");
 });
 
 // Uncomment the lines below when ready
-// promise.then(() => console.log('Promise has been resolved!'));
+// promise.then(() => console.log("Promise has been resolved!"));
 // console.log("I'm not the promise!");
 
 // Challenge 5
-function delay() {}
+function delay() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, 0);
+  });
+}
 
 // Uncomment the code below to test
 // This code should log "Hello" after 1000ms
@@ -44,8 +52,15 @@ function delay() {}
 // Challenge 6
 //
 // ADD CODE BELOW
-// var secondPromise =
-// var firstPromise =
+var secondPromise = new Promise(function (resolve, reject) {
+  resolve("Second!");
+});
+var firstPromise = new Promise(function (resolve, reject) {
+  resolve(secondPromise);
+});
+
+// Uncomment the line below
+// firstPromise.then((res) => console.log(res));
 
 // Challenge 7
 const fakePeople = [
@@ -67,4 +82,12 @@ const fakeAPICall = (i) => {
 
 function getAllData() {
   // CODE GOES HERE
+  const apiCalls = [];
+  for (let i = 0; i < fakePeople.length; i++) {
+    apiCalls.push(fakeAPICall(i));
+  }
+  return Promise.all(apiCalls).then((data) => console.log(data));
 }
+
+// Uncomment the line below
+// getAllData();
