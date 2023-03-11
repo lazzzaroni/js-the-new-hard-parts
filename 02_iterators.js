@@ -76,11 +76,16 @@ function sumArray(arr) {
 // CHALLENGE 4
 
 function setIterator(set) {
-  // YOUR CODE HERE
+  let it = set.values();
+  return {
+    next: function () {
+      return it.next()["value"];
+    },
+  };
 }
 
 // Uncomment the lines below to test your work
-// const mySet = new Set('hey');
+// const mySet = new Set("hey");
 // const iterateSet = setIterator(mySet);
 // console.log(iterateSet.next()); // -> should log 'h'
 // console.log(iterateSet.next()); // -> should log 'e'
