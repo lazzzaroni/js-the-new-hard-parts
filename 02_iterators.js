@@ -94,11 +94,18 @@ function setIterator(set) {
 // CHALLENGE 5
 
 function indexIterator(arr) {
-  // YOUR CODE HERE
+  let i = 0;
+  return {
+    next: function () {
+      const value = arr[i];
+      i++;
+      return [i - 1, value];
+    },
+  };
 }
 
 // Uncomment the lines below to test your work
-// const array5 = ['a', 'b', 'c', 'd'];
+// const array5 = ["a", "b", "c", "d"];
 // const iteratorWithIndex = indexIterator(array5);
 // console.log(iteratorWithIndex.next()); // -> should log [0, 'a']
 // console.log(iteratorWithIndex.next()); // -> should log [1, 'b']
