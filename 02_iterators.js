@@ -57,8 +57,16 @@ function nextIterator(arr) {
 // CHALLENGE 3
 
 function sumArray(arr) {
-  // YOUR CODE HERE
-  // use your nextIterator function
+  let result = 0;
+  let it = nextIterator(arr);
+  let next = it.next();
+
+  while (next) {
+    result += next;
+    next = it.next();
+  }
+
+  return result;
 }
 
 // Uncomment the lines below to test your work
