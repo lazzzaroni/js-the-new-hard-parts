@@ -37,7 +37,14 @@ function returnIterator(arr) {
 // CHALLENGE 2
 
 function nextIterator(arr) {
-  // YOUR CODE HERE
+  let i = 0;
+  const iterator = {
+    next: function () {
+      i++;
+      return arr[i - 1];
+    },
+  };
+  return iterator;
 }
 
 // Uncomment the lines below to test your work
