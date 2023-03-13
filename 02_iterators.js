@@ -162,9 +162,15 @@ function valueAndPrevIndex(array) {
 
 //CHALLENGE 8
 
-function* createConversation(string) {}
+function* createConversation(string) {
+  yield setInterval(() => {
+    if (string === "english") {
+      console.log("Hello");
+    }
+  }, 3000);
+}
 
-console.log(createConversation("english").next());
+// console.log(createConversation("english").next());
 
 //CHALLENGE 9
 function waitForVerb(noun) {}
