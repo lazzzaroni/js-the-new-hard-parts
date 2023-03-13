@@ -141,12 +141,24 @@ Words.prototype[Symbol.iterator] = function () {
 
 // CHALLENGE 7
 
-function valueAndPrevIndex(array) {}
+function valueAndPrevIndex(array) {
+  let i = 0;
 
-const returnedSentence = valueAndPrevIndex([4, 5, 6]);
-console.log(returnedSentence.sentence());
-console.log(returnedSentence.sentence());
-console.log(returnedSentence.sentence());
+  return {
+    sentence: function () {
+      i++;
+      if (i == 1) {
+        return `${array[i - 1]} is the first element.`;
+      }
+      return `${array[i - 1]} was found after index ${i - 2}.`;
+    },
+  };
+}
+
+// const returnedSentence = valueAndPrevIndex([4, 5, 6]);
+// console.log(returnedSentence.sentence());
+// console.log(returnedSentence.sentence());
+// console.log(returnedSentence.sentence());
 
 //CHALLENGE 8
 
