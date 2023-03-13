@@ -118,12 +118,26 @@ function Words(string) {
 }
 
 Words.prototype[Symbol.iterator] = function () {
-  // YOUR CODE HERE
+  let i = 0;
+  const words = this.str.split(/[\s]/g);
+
+  return {
+    next: function () {
+      if (i < words.length) {
+        const value = words[i];
+        i++;
+        return { value: value, done: false };
+      }
+      return { value: undefined, done: true };
+    },
+  };
 };
 
 // Uncomment the lines below to test your work
-// const helloWorld = new Words('Hello World');
-// for (let word of helloWorld) { console.log(word); } // -> should log 'Hello' and 'World'
+// const helloWorld = new Words("Hello World");
+// for (let word of helloWorld) {
+//   console.log(word);
+// } // -> should log 'Hello' and 'World'
 
 // CHALLENGE 7
 
