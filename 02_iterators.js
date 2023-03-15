@@ -173,8 +173,19 @@ function* createConversation(string) {
 // console.log(createConversation("english").next());
 
 //CHALLENGE 9
-function waitForVerb(noun) {}
+function waitForVerb(noun) {
+  return new Promise(function (resolve, reject) {
+    function printResult() {
+      resolve(`Feed ${noun}`);
+    }
 
-async function f(noun) {}
+    setTimeout(printResult, 3000);
+  });
+}
+
+async function f(noun) {
+  const result = await waitForVerb(noun);
+  console.log(result);
+}
 
 f("dog");
